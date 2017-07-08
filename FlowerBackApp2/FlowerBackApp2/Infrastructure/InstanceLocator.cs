@@ -2,7 +2,7 @@
 
 namespace FlowerBackApp2.Infrastructure
 {
-    class InstanceLocator
+    public class InstanceLocator
     {
         public MainViewModel Main { get; set; }
         public InstanceLocator()

@@ -13,7 +13,7 @@ namespace FlowerBackApp2
         {
             InitializeComponent();
 
-            MainPage = new FlowerBackApp2.Pages.FlowersPage();
+            MainPage = new NavigationPage(new FlowerBackApp2.Pages.FlowersPage());
         }
 
         protected override void OnStart()

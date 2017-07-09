@@ -1,11 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:infra="clr-namespace:FlowerBackApp2.Infrastructure;assembly=FlowerBackApp2"
-             x:Class="FlowerBackApp2.App">
-	<Application.Resources>
-        <ResourceDictionary>
-            <infra:InstanceLocator x:Key="Locator"></infra:InstanceLocator>
-        </ResourceDictionary>
-	</Application.Resources>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:infra="clr-namespace:FlowerBackApp2.Infrastructure;assembly=FlowerBackApp2" x:Class="FlowerBackApp2.App" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <Application.Resources>
+    <ResourceDictionary>
+      <infra:InstanceLocator x:Key="Locator">
+      </infra:InstanceLocator>
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>

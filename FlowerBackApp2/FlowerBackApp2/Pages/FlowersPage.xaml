@@ -34,5 +34,7 @@
         </ListView.ItemTemplate>
 
     </ListView>
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle.png" Command="{Binding AddFlowerCommand}"/>
+    </ContentPage.ToolbarItems>
 </ContentPage>

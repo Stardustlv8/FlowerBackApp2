@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System;
 using FlowerBackApp2.Models;
 using System.Collections.Generic;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 namespace FlowerBackApp2.ViewModels
 {
@@ -10,6 +12,7 @@ namespace FlowerBackApp2.ViewModels
     {
         #region Attributes
         private ApiService apiService;
+        private NavigationService navigationService { get; set; }
         #endregion
 
         #region Properties
@@ -19,8 +22,14 @@ namespace FlowerBackApp2.ViewModels
         #region Constructors
         public MainViewModel()
         {
+            //Service
             apiService = new ApiService();
+            navigationService = new NavigationService();
+
+            //ViewModels
             Flowers = new ObservableCollection<FlowerItemViewModel>();
+
+            //Load Data
             LoadFlowers();
         }
         #endregion
@@ -52,6 +61,12 @@ namespace FlowerBackApp2.ViewModels
         #endregion
 
         #region Commands
+        public ICommand AddFlowerCommand { get { return new RelayCommand(AddFlower); } }
+
+        private async void AddFlower()
+        {
+            await navigationService.Navigate("NewFlowerPage");
+        }
         #endregion
 
     }

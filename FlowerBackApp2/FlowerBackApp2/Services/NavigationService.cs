@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlowerBackApp2.Pages;
+using FlowerBackApp2.ViewModels;
 
 namespace FlowerBackApp2.Services
 {
@@ -14,6 +15,9 @@ namespace FlowerBackApp2.Services
             switch (pageName)
             {
                 case "NewFlowerPage":
+                    var mainViewModel = MainViewModel.GetInstance();
+                    mainViewModel.NewFlower = new NewFlowerViewModel();
+
                     await App.Current.MainPage.Navigation.PushAsync(new NewFlowerPage());
                     break;
                 default:

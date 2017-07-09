@@ -12,16 +12,22 @@ namespace FlowerBackApp2.ViewModels
     {
         #region Attributes
         private ApiService apiService;
-        private NavigationService navigationService { get; set; }
+        private NavigationService navigationService;
+        private DialogService dialogService;
         #endregion
 
         #region Properties
         public ObservableCollection<FlowerItemViewModel> Flowers { get; set; }
+        public NewFlowerViewModel NewFlower { get; set; }
+        
         #endregion
 
         #region Constructors
         public MainViewModel()
         {
+            //Singleton
+            instance = this;
+
             //Service
             apiService = new ApiService();
             navigationService = new NavigationService();
@@ -38,10 +44,14 @@ namespace FlowerBackApp2.ViewModels
 
         private async void LoadFlowers()
         {
-            var flowers = await apiService.Get<Flower>("http://flowerback220170702014717.azurewebsites.net/", 
+            var respose = await apiService.Get<Flower>("http://flowerback220170702014717.azurewebsites.net/", 
                 "/api","/Flowers");
-
-            ReloadFlowers(flowers);
+            if (!respose.IsSuccess)
+            {
+                await dialogService.ShowMessage("Error", respose.Message);
+                return;
+            }
+            ReloadFlowers((List<Flower>)respose.Result);
         }
 
         private void ReloadFlowers(List<Flower> flowers)
@@ -67,6 +77,20 @@ namespace FlowerBackApp2.ViewModels
         {
             await navigationService.Navigate("NewFlowerPage");
         }
+        #endregion
+
+        #region Singleton
+        private static MainViewModel instance;
+
+        public static MainViewModel GetInstance()
+        {
+            if(instance == null)
+            {
+                instance = new MainViewModel();
+            }
+            return instance;
+        }
+
         #endregion
 
     }

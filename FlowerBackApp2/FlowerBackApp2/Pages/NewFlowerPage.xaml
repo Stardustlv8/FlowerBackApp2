@@ -4,9 +4,32 @@
              x:Class="FlowerBackApp2.Pages.NewFlowerPage"
              Title="New Flower"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout Padding="8" 
+        BindingContext="{Binding NewFlower}">
+        
+        <Label Text="Description"/>
+        
+        <Entry Text="{Binding Description, Mode=TwoWay}"
+               Placeholder="Enter a description..."/>
+
+        <Label Text="Price"/>
+
+        <Entry Text="{Binding Price, Mode=TwoWay}"
+               Keyboard="Numeric"
+               Placeholder="Enter a price..."/>
+
+        <ActivityIndicator IsRunning=
+                           "{Binding IsRunning, Mode=TwoWay}"/>
+
+        <Button
+            Command="{Binding NewFlowerCommand}"
+            IsEnabled="{Binding IsEnable, Mode=TwoWay}"
+            BorderRadius="20"
+            HeightRequest="40"
+            BackgroundColor="Blue"
+            TextColor="White"
+            Text="New"/>
+
+        
+    </StackLayout>
 </ContentPage>

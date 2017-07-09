@@ -42,11 +42,14 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Flower.cs" />
     <Compile Include="Pages\FlowersPage.xaml.cs">
       <DependentUpon>FlowersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiService.cs" />
+    <Compile Include="ViewModels\FlowerItemViewModel.cs" />
+    <Compile Include="ViewModels\IObservableCollection.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
